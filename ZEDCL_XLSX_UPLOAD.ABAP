@@ -1,4 +1,4 @@
-class ZEDCL_XLSX_CONVERTER definition
+class ZEDCL_XLSX_UPLOAD definition
   public
   final
   create public .
@@ -168,11 +168,11 @@ ENDCLASS.
 
 
 
-CLASS ZEDCL_XLSX_CONVERTER IMPLEMENTATION.
+CLASS ZEDCL_XLSX_UPLOAD IMPLEMENTATION.
 
 
 * <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Private Method ZEDCL_XLSX_CONVERTER->ADD_MESSAGE
+* | Instance Private Method ZEDCL_XLSX_UPLOAD->ADD_MESSAGE
 * +-------------------------------------------------------------------------------------------------+
 * +--------------------------------------------------------------------------------------</SIGNATURE>
   METHOD add_message.
@@ -192,7 +192,7 @@ CLASS ZEDCL_XLSX_CONVERTER IMPLEMENTATION.
 
 
 * <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Public Method ZEDCL_XLSX_CONVERTER->CONSTRUCTOR
+* | Instance Public Method ZEDCL_XLSX_UPLOAD->CONSTRUCTOR
 * +-------------------------------------------------------------------------------------------------+
 * | [--->] IV_FILEPATH                    TYPE        STRING
 * | [--->] IV_APPSERVER                   TYPE        BOOLE_D (default =ABAP_FALSE)
@@ -283,22 +283,22 @@ CLASS ZEDCL_XLSX_CONVERTER IMPLEMENTATION.
 
 
 * <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Static Public Method ZEDCL_XLSX_CONVERTER=>CONVERT_DATE_TO_INTERNAL
+* | Static Public Method ZEDCL_XLSX_UPLOAD=>CONVERT_DATE_TO_INTERNAL
 * +-------------------------------------------------------------------------------------------------+
 * | [--->] IV_DATE                        TYPE        STRING
 * | [<-()] RV_DATE                        TYPE        DATS
 * +--------------------------------------------------------------------------------------</SIGNATURE>
 method CONVERT_DATE_TO_INTERNAL.
   IF iv_date CO '0123456789'.
-    rv_date = ZEDCL_XLSX_CONVERTER=>convert_xlsx_date_to_sap( iv_date ).
+    rv_date = ZEDCL_XLSX_UPLOAD=>convert_xlsx_date_to_sap( iv_date ).
   ELSE.
-    rv_date = ZEDCL_XLSX_CONVERTER=>convert_text_date_to_sap( iv_date ).
+    rv_date = ZEDCL_XLSX_UPLOAD=>convert_text_date_to_sap( iv_date ).
   ENDIF.
 endmethod.
 
 
 * <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Static Public Method ZEDCL_XLSX_CONVERTER=>CONVERT_TEXT_DATE_TO_SAP
+* | Static Public Method ZEDCL_XLSX_UPLOAD=>CONVERT_TEXT_DATE_TO_SAP
 * +-------------------------------------------------------------------------------------------------+
 * | [--->] IV_DATE                        TYPE        STRING
 * | [<-()] RV_DATE                        TYPE        DATS
@@ -322,7 +322,7 @@ ENDMETHOD.
 
 
 * <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Static Public Method ZEDCL_XLSX_CONVERTER=>CONVERT_TEXT_TIME_TO_SAP
+* | Static Public Method ZEDCL_XLSX_UPLOAD=>CONVERT_TEXT_TIME_TO_SAP
 * +-------------------------------------------------------------------------------------------------+
 * | [--->] IV_TIME                        TYPE        STRING
 * | [<-()] RV_TIME                        TYPE        SYTIME
@@ -345,22 +345,22 @@ ENDMETHOD.
 
 
 * <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Static Public Method ZEDCL_XLSX_CONVERTER=>CONVERT_TIME_TO_INTERNAL
+* | Static Public Method ZEDCL_XLSX_UPLOAD=>CONVERT_TIME_TO_INTERNAL
 * +-------------------------------------------------------------------------------------------------+
 * | [--->] IV_TIME                        TYPE        STRING
 * | [<-()] RV_TIME                        TYPE        SYTIME
 * +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD convert_time_to_internal.
   IF iv_time CO '0123456789' AND iv_time CS '.'.
-    rv_time = ZEDCL_XLSX_CONVERTER=>convert_xlsx_time_to_sap( iv_time ).
+    rv_time = ZEDCL_XLSX_UPLOAD=>convert_xlsx_time_to_sap( iv_time ).
   ELSE.
-    rv_time = ZEDCL_XLSX_CONVERTER=>convert_text_time_to_sap( iv_time ).
+    rv_time = ZEDCL_XLSX_UPLOAD=>convert_text_time_to_sap( iv_time ).
   ENDIF.
 ENDMETHOD.
 
 
 * <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Static Public Method ZEDCL_XLSX_CONVERTER=>CONVERT_XLSX_DATE_TO_SAP
+* | Static Public Method ZEDCL_XLSX_UPLOAD=>CONVERT_XLSX_DATE_TO_SAP
 * +-------------------------------------------------------------------------------------------------+
 * | [--->] IV_DATE                        TYPE        STRING
 * | [<-()] RV_DATE                        TYPE        DATS
@@ -390,7 +390,7 @@ ENDMETHOD.
 
 
 * <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Static Public Method ZEDCL_XLSX_CONVERTER=>CONVERT_XLSX_TIME_TO_SAP
+* | Static Public Method ZEDCL_XLSX_UPLOAD=>CONVERT_XLSX_TIME_TO_SAP
 * +-------------------------------------------------------------------------------------------------+
 * | [--->] IV_TIME                        TYPE        STRING
 * | [<-()] RV_TIME                        TYPE        SYTIME
@@ -410,7 +410,7 @@ endmethod.
 
 
 * <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Private Method ZEDCL_XLSX_CONVERTER->DOMAIN_CHECK
+* | Instance Private Method ZEDCL_XLSX_UPLOAD->DOMAIN_CHECK
 * +-------------------------------------------------------------------------------------------------+
 * +--------------------------------------------------------------------------------------</SIGNATURE>
   method DOMAIN_CHECK.
@@ -418,7 +418,7 @@ endmethod.
 
 
 * <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Private Method ZEDCL_XLSX_CONVERTER->FILL_EMPTY_COLUMNS
+* | Instance Private Method ZEDCL_XLSX_UPLOAD->FILL_EMPTY_COLUMNS
 * +-------------------------------------------------------------------------------------------------+
 * | [--->] IV_NEW_ROW                     TYPE        BOOLE_D
 * | [--->] IV_PREV_COL                    TYPE        STRING
@@ -458,7 +458,7 @@ ENDMETHOD.
 
 
 * <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Private Method ZEDCL_XLSX_CONVERTER->FILL_EMPTY_ROWS
+* | Instance Private Method ZEDCL_XLSX_UPLOAD->FILL_EMPTY_ROWS
 * +-------------------------------------------------------------------------------------------------+
 * | [--->] IV_PREV_ROW                    TYPE        I
 * | [--->] IV_CURR_ROW                    TYPE        I
@@ -474,7 +474,7 @@ ENDMETHOD.
 
 
 * <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Public Method ZEDCL_XLSX_CONVERTER->FREE
+* | Instance Public Method ZEDCL_XLSX_UPLOAD->FREE
 * +-------------------------------------------------------------------------------------------------+
 * +--------------------------------------------------------------------------------------</SIGNATURE>
   METHOD free.
@@ -488,7 +488,7 @@ ENDMETHOD.
 
 
 * <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Private Method ZEDCL_XLSX_CONVERTER->GENERATE_EXCEL_COLUMN_NAMES
+* | Instance Private Method ZEDCL_XLSX_UPLOAD->GENERATE_EXCEL_COLUMN_NAMES
 * +-------------------------------------------------------------------------------------------------+
 * | [--->] IV_MAX_COLUMNS                 TYPE        I
 * | [<-()] RT_EXCEL_COLUMNS               TYPE        GTT_EXCEL_COLUMNS
@@ -528,7 +528,7 @@ ENDMETHOD.
 
 
 * <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Public Method ZEDCL_XLSX_CONVERTER->GET_DATA_AS_ITAB
+* | Instance Public Method ZEDCL_XLSX_UPLOAD->GET_DATA_AS_ITAB
 * +-------------------------------------------------------------------------------------------------+
 * | [--->] IV_SHEET_INDEX                 TYPE        I(optional)
 * | [--->] IV_SHEET_NAME                  TYPE        STRING(optional)
@@ -568,9 +568,9 @@ METHOD get_data_as_itab.
           IF iv_conv_active EQ abap_true.
             CASE  lv_type.
               WHEN mc_abap_type-date_type.
-                <lv_comp> = ZEDCL_XLSX_CONVERTER=>convert_date_to_internal( iv_date = lv_cell ).
+                <lv_comp> = ZEDCL_XLSX_UPLOAD=>convert_date_to_internal( iv_date = lv_cell ).
               WHEN mc_abap_type-time_type.
-                <lv_comp> = ZEDCL_XLSX_CONVERTER=>convert_time_to_internal( iv_time = lv_cell ).
+                <lv_comp> = ZEDCL_XLSX_UPLOAD=>convert_time_to_internal( iv_time = lv_cell ).
               WHEN OTHERS.
                 <lv_comp> = lv_cell.
             ENDCASE.
@@ -589,7 +589,7 @@ ENDMETHOD.
 
 
 * <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Public Method ZEDCL_XLSX_CONVERTER->GET_MESSAGES
+* | Instance Public Method ZEDCL_XLSX_UPLOAD->GET_MESSAGES
 * +-------------------------------------------------------------------------------------------------+
 * | [<-()] RV_MESSAGES                    TYPE        TT_RETURN
 * +--------------------------------------------------------------------------------------</SIGNATURE>
@@ -599,7 +599,7 @@ endmethod.
 
 
 * <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Private Method ZEDCL_XLSX_CONVERTER->GET_NEXT_EXCEL_COLUMN
+* | Instance Private Method ZEDCL_XLSX_UPLOAD->GET_NEXT_EXCEL_COLUMN
 * +-------------------------------------------------------------------------------------------------+
 * | [--->] IV_COLUMN                      TYPE        STRING
 * | [<-()] RV_COLUMN                      TYPE        STRING
@@ -615,7 +615,7 @@ ENDMETHOD.
 
 
 * <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Private Method ZEDCL_XLSX_CONVERTER->GET_SHARED_STRINGS
+* | Instance Private Method ZEDCL_XLSX_UPLOAD->GET_SHARED_STRINGS
 * +-------------------------------------------------------------------------------------------------+
 * | [<-()] RT_SHARED_STRINGS              TYPE        ESH_T_STRING
 * +--------------------------------------------------------------------------------------</SIGNATURE>
@@ -673,7 +673,7 @@ ENDMETHOD.
 
 
 * <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Private Method ZEDCL_XLSX_CONVERTER->GET_SHEET_DATA
+* | Instance Private Method ZEDCL_XLSX_UPLOAD->GET_SHEET_DATA
 * +-------------------------------------------------------------------------------------------------+
 * | [--->] IV_SHEET_REFID                 TYPE        STRING
 * | [--->] IV_SEPARATOR                   TYPE        ABAP_CHAR1 (default =CL_ABAP_CHAR_UTILITIES=>HORIZONTAL_TAB)
@@ -820,7 +820,7 @@ ENDMETHOD.
 
 
 * <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Private Method ZEDCL_XLSX_CONVERTER->GET_SHEET_META_DATA
+* | Instance Private Method ZEDCL_XLSX_UPLOAD->GET_SHEET_META_DATA
 * +-------------------------------------------------------------------------------------------------+
 * | [<-()] RT_SHEET_META_DATA             TYPE        GTT_SHEET_META_DATA
 * +--------------------------------------------------------------------------------------</SIGNATURE>
@@ -890,7 +890,7 @@ ENDMETHOD.
 
 
 * <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Public Method ZEDCL_XLSX_CONVERTER->GET_TAB_SEPARATED_DATA
+* | Instance Public Method ZEDCL_XLSX_UPLOAD->GET_TAB_SEPARATED_DATA
 * +-------------------------------------------------------------------------------------------------+
 * | [--->] IV_SHEET_INDEX                 TYPE        I(optional)
 * | [--->] IV_SHEET_NAME                  TYPE        STRING(optional)
@@ -914,7 +914,7 @@ ENDMETHOD.
 
 
 * <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Private Method ZEDCL_XLSX_CONVERTER->GET_XML_DOC_REF
+* | Instance Private Method ZEDCL_XLSX_UPLOAD->GET_XML_DOC_REF
 * +-------------------------------------------------------------------------------------------------+
 * | [--->] IV_XML                         TYPE        STRING
 * | [<-()] RO_IXML_DOCUMENT               TYPE REF TO IF_IXML_DOCUMENT
